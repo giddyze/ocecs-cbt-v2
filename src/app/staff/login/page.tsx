@@ -30,7 +30,7 @@ function StaffLoginForm() {
     const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (signInError) {
-      setError("Invalid email or password.");
+      setError(signInError.message);
       return;
     }
     router.push(params.get("next") || "/admin");
